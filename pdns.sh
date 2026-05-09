@@ -22,7 +22,7 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-# set -x
+set -x
 
 # change this to your network interface you want to monitor, or use the interface name as argument
 # to this script, for example `./pdns.sh eth0`
@@ -45,13 +45,26 @@ else
 fi
 arg=""
 
-if [[  -z "$NetworkInterface" ]]; then 
+
+
+if [[  -z "$NetworkInterface" ]]   ; then 
     echo "Please specify network interface you want to monitor by use it's 
 name as argument to this script, for example:
 $0 eth0
 or edit the $0 script file, and change the value of 'NetworkInterface' variable 
 to the network interface you want to monitor"
     exit 3 
+fi
+
+# validte the interface
+/usr/bin/env ip stats show dev "$NetworkInterface" &>/dev/null 
+tmpst=$?
+    
+
+if [[  "$tmpst" -ne 0 ]]; then 
+    echo "Invalid Network Interface '$NetworkInterface', select one of those interfaces:
+`/usr/bin/env basename -a /sys/class/net/*`"
+    exit 4
 fi
 
 PassiveDnsDir="/opt/passivedns"
@@ -82,8 +95,8 @@ Ubuntu_install(){
 deps_install_fallback(){
     echo "please install dependencies for passivedns because the script cannot get your 
 operating system, to install dependencies please visit https://github.com/gamelinux/passivedns/blob/master/doc/INSTALL
-and use the installation commands that match your system, and rerun the script with -d flag, for example:
-$0 eth0 -d"
+and use the installation commands that match your system, and rerun this script with -d flag, for example:
+$0 $NetworkInterface -d"
     exit 2
 }
 
