@@ -11,6 +11,7 @@
 
 `PassiveDNS_SVC` is a Bash script that installs PassiveDNS on the system, 
 and create service user and service to run PassiveDNS in that service.
+
 ---
 
 
@@ -33,6 +34,7 @@ NOTE: replace eth0 in the command above ./pdns.sh 'eth0' with the network interf
 
 I wrote an article about PassiveDNS, and how to investigate PassiveDNS logs,
 happy reading: https://medium.com/@amrasmer/linux-log-enhancement-part-3-4f793ca01fca
+
 ---
 
 ## Best Security Practices Series
@@ -40,7 +42,9 @@ happy reading: https://medium.com/@amrasmer/linux-log-enhancement-part-3-4f793ca
 This project is part of Best Security Practices.
 
 Best Security Practices is a series I started to share my security knowledege with the community.
+
 ---
+
 
 
 ## License
