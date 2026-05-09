@@ -45,7 +45,11 @@ Best Security Practices is a series I started to share my security knowledege wi
 
 ---
 
+## PassiveDNS
 
+PassiveDNS project link: https://github.com/gamelinux/passivedns 
+
+---
 
 ## License
 
